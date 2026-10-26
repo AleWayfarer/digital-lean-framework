@@ -2,6 +2,14 @@
 
 Versioning: the master framework drives the baseline version. Each operational asset carries its own version and declares the master version it is compatible with.
 
+## DLF v2.4.1 — packaging fix (2026-10-26)
+
+No change to the framework text: all assets keep the versions of v2.4.
+
+- Figures added: Efficiency Matrix and Efficiency Frontier (Italian in `framework/it/`, English in `framework/en/img/`).
+- Italian PDF editions with figures added in `pdf/it/`.
+- Lean Advisor packages (Claude, Gemini; IT and EN): the copy of the master framework realigned with the canonical text; links to figures and PDFs now point to this repository.
+
 ## DLF v2.4 — first public release (2026-10-26)
 
 | Asset | Version | Compatible with |
