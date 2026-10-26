@@ -34,6 +34,7 @@ digital-lean-framework/
 │   ├── it/                  Canonical edition (Italian): master framework, Operating Guide, 4 operational assets
 │   └── en/                  English edition (figures in en/img/)
 ├── pdf/it/                  PDF editions (Italian), with figures
+├── talks/                   Slides: "Lean Digital: The Next Step" (EN, 41 slides)
 ├── skills/
 │   ├── claude/              Lean Advisor skill for Claude (lean-advisor-en, lean-advisor)
 │   └── gemini/              Lean Advisor as a Gemini Gem (EN, IT)
@@ -50,6 +51,8 @@ digital-lean-framework/
 | Law Zero Workflow | 2.1 | Decision workflow with three paths (A: not digitized · B: remediation · C: human processes) |
 
 PDF editions with figures: [pdf/it/](pdf/it/). The English PDF editions will follow.
+
+Slides: [Lean Digital: The Next Step](talks/dlf-pitch-lean-digital-the-next-step.pdf), a 41-slide introduction to DLF v2.4 in English.
 
 ## The Lean Advisor (AI skill)
 

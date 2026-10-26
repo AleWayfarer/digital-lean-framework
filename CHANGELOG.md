@@ -9,6 +9,7 @@ No change to the framework text: all assets keep the versions of v2.4.
 - Figures added: Efficiency Matrix and Efficiency Frontier (Italian in `framework/it/`, English in `framework/en/img/`).
 - Italian PDF editions with figures added in `pdf/it/`.
 - Lean Advisor packages (Claude, Gemini; IT and EN): the copy of the master framework realigned with the canonical text; links to figures and PDFs now point to this repository.
+- Slides "Lean Digital: The Next Step" (EN, 41 slides) added in `talks/`.
 
 ## DLF v2.4 — first public release (2026-10-26)
 

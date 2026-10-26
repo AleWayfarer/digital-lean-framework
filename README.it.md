@@ -40,6 +40,8 @@ Il DLF è un **framework di applicazione del lean thinking, non una nuova scuola
 
 Le edizioni PDF, con le figure, sono in [pdf/it/](pdf/it/).
 
+Slide: [Lean Digital: The Next Step](talks/dlf-pitch-lean-digital-the-next-step.pdf), 41 slide di presentazione del DLF v2.4, in inglese.
+
 ## Licenza
 
 DLF — Digital Lean Framework © 2026 Alessio Setaro, rilasciato con licenza [Creative Commons Attribuzione-Non commerciale-Non opere derivate 4.0 Internazionale](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.it). Uso commerciale, versioni adattate, traduzioni e offerte di formazione o consulenza basate sul DLF richiedono autorizzazione scritta. Vedi [LICENSE.md](LICENSE.md).
