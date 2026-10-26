@@ -7,7 +7,7 @@
 > Applicazione sistematica dei principi del lean thinking ai processi umani e digitali delle organizzazioni.
 > Manifesto, architettura, cinque pillar, principi operativi VALUE/STREAM/CLEAN/FLOW/KAIZEN, Digital Lean Index e applicazione per dominio.
 
-DLF — Digital Lean Framework © 2026 Alessio Setaro · [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) · Le figure (Matrice di Efficienza, Frontiera di efficienza) sono incluse nell'edizione PDF pubblicata nelle Release del repository.
+DLF — Digital Lean Framework © 2026 Alessio Setaro · [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) · Edizione PDF nella cartella [pdf/it/](https://github.com/AleWayfarer/digital-lean-framework/tree/main/pdf/it).
 
 ---
 
@@ -530,7 +530,7 @@ In termini semplici: se gli arrivi e i tempi sono perfettamente regolari, puoi s
 
 Nel DLF la variabilità è valutata qualitativamente, non quantitativamente. Per una misurazione rigorosa servirebbero dati di distribuzione su arrivi e tempi di processo, fuori dallo scope di un assessment DLI standard. La valutazione qualitativa è sufficiente a identificare la presenza del problema, chiedendo "i tempi sono stabili o variano?", "gli arrivi sono prevedibili o a picchi?", "il team riesce ad assorbire i picchi senza generare coda?". Per dimensionare il problema serve l'analisi quantitativa, che è un livello di maturità successivo.
 
-![Matrice di Efficienza — Pillar 3: i due assi flow × resource, i quattro quadranti (Deserto, Isole, Oceano, Stato Perfetto).](matrice_efficienza.png)
+![Matrice di Efficienza — Pillar 3: i due assi flow × resource, i quattro quadranti (Deserto, Isole, Oceano, Stato Perfetto).](https://raw.githubusercontent.com/AleWayfarer/digital-lean-framework/main/framework/it/matrice_efficienza.png)
 
 *Figura 1 — La Matrice di Efficienza. Sui due assi indipendenti flow efficiency × resource efficiency si dispongono i quattro quadranti che orientano la lettura strategica del processo. Il Deserto è l'unica posizione mai scelta deliberatamente; Isole e Oceano sono entrambi quadranti legittimi a seconda della strategia operativa; lo Stato Perfetto è un asintoto teorico schiacciato dalla variabilità (vedi Figura 2).*
 
@@ -573,7 +573,7 @@ Il DLF non prescrive un quadrante target. Il framework aiuta a:
 
 Il Deserto è l'unica posizione che il framework dichiara come "da uscire" universalmente. Tutti gli altri quadranti sono scelte strategiche legittime, purché consapevoli. Una compagnia low-cost che sta nelle Isole sta nel suo modello di business; uscire dalle Isole per andare nell'Oceano significherebbe cambiare modello e va deciso strategicamente, non perché "l'Oceano è il quadrante lean".
 
-![Frontiera dell'Efficienza — La curva si schiaccia all'aumentare della variabilità; lo Stato Perfetto è asintoto teorico.](frontiera_efficienza.png)
+![Frontiera dell'Efficienza — La curva si schiaccia all'aumentare della variabilità; lo Stato Perfetto è asintoto teorico.](https://raw.githubusercontent.com/AleWayfarer/digital-lean-framework/main/framework/it/frontiera_efficienza.png)
 
 *Figura 2 — La Frontiera dell'Efficienza. La curva che limita lo spazio strategico accessibile non è fissa: dipende dal livello di variabilità del processo. Variabilità bassa → frontiera vicina allo Stato Perfetto; variabilità alta → frontiera schiacciata, lo spazio accessibile si riduce. Lo Stato Perfetto resta un asintoto teorico (mai raggiungibile pienamente perché la variabilità non si annulla mai del tutto). Implicazione: la riduzione della variabilità (Legge della Variabilità, Sezione 7.3) è la leva che amplia lo spazio strategico, non solo l'utilizzo o la velocità.*
 

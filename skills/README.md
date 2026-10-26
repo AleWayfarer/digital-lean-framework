@@ -27,6 +27,6 @@ Follow `GEM_SETUP_GUIDE.md` in the Gem folder. Do not use Gemini's "re-write ins
 
 ## Versioning
 
-All packages are snapshots of DLF v2.4. The files in `references/` and `knowledge/` are copies of the canonical texts in [`framework/it/`](../framework/it); when the framework changes, the packages are regenerated.
+All packages are snapshots of DLF v2.4. The files in `references/` and `knowledge/` are copies of the canonical texts in [`framework/it/`](../framework/it), with links to figures and PDFs pointing to this repository; when the framework changes, the packages are regenerated.
 
 Licensed CC BY-NC-ND 4.0: you may use the skills as distributed; modified or rebranded versions may not be redistributed.
