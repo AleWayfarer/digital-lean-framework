@@ -1,0 +1,50 @@
+name: Field report
+description: You applied DLF on a real process. Tell us what happened.
+title: "[Field report] "
+labels: ["field-report"]
+body:
+  - type: markdown
+    attributes:
+      value: "Issues are public: please do not include confidential information about your organization, clients or colleagues."
+  - type: dropdown
+    id: track
+    attributes:
+      label: Operational track
+      options:
+        - IT and Digital Service Delivery
+        - Cybersecurity
+        - Leadership & People
+        - AI Adoption
+        - Digital Transformation Programs (transversal layer)
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: What did you run?
+      options:
+        - DLI Assessment
+        - Muda scan
+        - Sprint Kaizen
+        - Law Zero workflow
+        - Lean Advisor skill / Gem
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what-worked
+    attributes:
+      label: What worked
+    validations:
+      required: true
+  - type: textarea
+    id: what-did-not
+    attributes:
+      label: What did not work, or was missing
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: DLF version used
+      placeholder: "v2.4"

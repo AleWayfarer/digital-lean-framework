@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Lean Framework v2.4 — In una pagina</title>
+<style>
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f6f3;
+  --text-primary: #1f1f1d;
+  --text-secondary: #6b6a64;
+  --text-tertiary: #9c9a92;
+  --border-tertiary: rgba(31, 31, 29, 0.15);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1f1f1d;
+    --bg-secondary: #2c2c2a;
+    --text-primary: #f5f4ef;
+    --text-secondary: #c2c0b6;
+    --text-tertiary: #9c9a92;
+    --border-tertiary: rgba(245, 244, 239, 0.15);
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 32px 24px;
+  max-width: 920px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+h1 { font-size: 22px; font-weight: 500; margin: 0 0 8px; }
+.subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
+.dlf-intro { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin: 0 0 1.5rem; padding: 12px 16px; background: var(--bg-secondary); border-radius: 10px; }
+.dlf-intro b { color: var(--text-primary); font-weight: 500; }
+.dlf-grid { display: grid; grid-template-columns: 130px 1fr; gap: 12px; align-items: stretch; margin: 0.5rem 0; }
+.dlf-tier-label { display: flex; flex-direction: column; justify-content: center; padding: 14px 12px; border-radius: 12px; background: var(--bg-secondary); border: 0.5px solid var(--border-tertiary); }
+.dlf-tier-num { font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.04em; margin-bottom: 4px; }
+.dlf-tier-name { font-size: 14px; font-weight: 500; line-height: 1.3; }
+.dlf-tier-sub { font-size: 11px; color: var(--text-secondary); margin-top: 4px; line-height: 1.3; }
+.dlf-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.dlf-row-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.dlf-node { padding: 10px 12px; border-radius: 10px; border: 0.5px solid; min-height: 56px; display: flex; flex-direction: column; justify-content: center; }
+.dlf-node-title { font-size: 13px; font-weight: 500; line-height: 1.25; margin-bottom: 3px; }
+.dlf-node-sub { font-size: 11px; line-height: 1.3; opacity: 0.85; }
+.n-gray { background: #F1EFE8; border-color: #5F5E5A; color: #2C2C2A; }
+.n-purple { background: #EEEDFE; border-color: #534AB7; color: #26215C; }
+.n-teal { background: #E1F5EE; border-color: #0F6E56; color: #04342C; }
+.n-amber { background: #FAEEDA; border-color: #854F0B; color: #412402; }
+.n-coral { background: #FAECE7; border-color: #993C1D; color: #4A1B0C; }
+.dlf-vconn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 6px 0; color: var(--text-tertiary); font-size: 11px; font-style: italic; }
+.dlf-vconn .arr { font-size: 16px; font-weight: 500; letter-spacing: -2px; }
+.dlf-section-head { display: flex; align-items: baseline; gap: 10px; margin: 1.5rem 0 0.5rem; padding-bottom: 6px; border-bottom: 0.5px solid var(--border-tertiary); }
+.dlf-section-num { font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.06em; }
+.dlf-section-title { font-size: 14px; font-weight: 500; }
+.dlf-trace { background: var(--bg-secondary); border-radius: 10px; padding: 12px 14px; font-size: 12px; line-height: 1.5; margin: 0.75rem 0; border-left: 3px solid #534AB7; }
+.dlf-trace .step { font-weight: 500; }
+.dlf-trace .arrow { color: var(--text-tertiary); margin: 0 6px; }
+.dlf-trace .verdict { font-style: italic; color: var(--text-secondary); display: block; margin-top: 6px; }
+.dlf-trace-head { font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.06em; margin-bottom: 6px; }
+.dlf-lean-test { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 0.75rem; }
+.dlf-test-card { padding: 14px 14px 12px; border-radius: 10px; background: #FAECE7; border: 0.5px solid #993C1D; color: #4A1B0C; }
+.dlf-test-num { font-size: 11px; color: #993C1D; letter-spacing: 0.06em; font-weight: 500; }
+.dlf-test-title { font-size: 13px; font-weight: 500; margin: 4px 0 8px; }
+.dlf-test-body { font-size: 11.5px; line-height: 1.45; }
+.dlf-test-fail { font-size: 11px; font-style: italic; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid rgba(153, 60, 29, 0.3); }
+.dlf-verdict { font-size: 11px; color: var(--text-secondary); margin-top: 10px; text-align: center; font-style: italic; }
+.dlf-tracks-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.dlf-track-node { padding: 12px; border-radius: 10px; border: 0.5px solid; min-height: 80px; display: flex; flex-direction: column; }
+.dlf-track-title { font-size: 13px; font-weight: 500; line-height: 1.25; margin-bottom: 4px; }
+.dlf-track-sub { font-size: 11px; line-height: 1.35; opacity: 0.85; }
+.dlf-layer-row { margin-top: 10px; }
+.dlf-layer-node { padding: 12px 14px; border-radius: 10px; border: 0.5px solid; display: flex; flex-direction: column; }
+.dlf-layer-tag { font-size: 10px; letter-spacing: 0.06em; opacity: 0.75; margin-bottom: 3px; text-transform: uppercase; }
+.dlf-layer-title { font-size: 13px; font-weight: 500; line-height: 1.25; margin-bottom: 4px; }
+.dlf-layer-sub { font-size: 11px; line-height: 1.4; opacity: 0.85; }
+.dlf-tracks-caption { font-size: 10.5px; color: var(--text-tertiary); margin-top: 10px; font-style: italic; text-align: center; }
+.footer { font-size: 11px; color: var(--text-tertiary); text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--border-tertiary); }
+@media print {
+  body { max-width: none; padding: 16px; }
+  .dlf-node, .dlf-test-card { break-inside: avoid; }
+  .dlf-grid, .dlf-lean-test { break-inside: avoid; }
+}
+.footer a { color: inherit; text-decoration: underline; }
+</style>
+</head>
+<body>
+<h1>DLF v2.4 — Una pagina</h1>
+<p class="subtitle">Verticale lean alla Nishida · Companion del Digital Lean Framework v2.4</p>
+
+<p class="dlf-intro"><b>I quattro livelli del lean sono connessi verticalmente.</b> Lettura dall'alto: i valori si traducono fino agli strumenti. Lettura dal basso: ogni strumento deve <b>risalire</b> a un principio, a un pillar, a un valore. Se non risale, è teatro lean.</p>
+
+<div class="dlf-grid">
+<div class="dlf-tier-label">
+<div class="dlf-tier-num">LIVELLO 1</div>
+<div class="dlf-tier-name">Valori</div>
+<div class="dlf-tier-sub">Come l'organizzazione È</div>
+</div>
+<div class="dlf-row-4">
+<div class="dlf-node n-gray"><div class="dlf-node-title">Lavoro in team</div><div class="dlf-node-sub">Collettivo, non singolo</div></div>
+<div class="dlf-node n-gray"><div class="dlf-node-title">Comunicazione</div><div class="dlf-node-sub">4+1 tipi (con Jidoka)</div></div>
+<div class="dlf-node n-gray"><div class="dlf-node-title">Sobrietà + spreco</div><div class="dlf-node-sub">Eliminazione muda</div></div>
+<div class="dlf-node n-gray"><div class="dlf-node-title">Miglioramento</div><div class="dlf-node-sub">Cicli brevi</div></div>
+</div>
+</div>
+
+<div class="dlf-vconn"><span class="arr">↓</span><span>si traducono in / si giustificano in</span><span class="arr">↑</span></div>
+
+<div class="dlf-grid">
+<div class="dlf-tier-label">
+<div class="dlf-tier-num">LIVELLO 2</div>
+<div class="dlf-tier-name">Pillar</div>
+<div class="dlf-tier-sub">Come l'organizzazione PENSA</div>
+</div>
+<div class="dlf-row">
+<div class="dlf-node n-purple"><div class="dlf-node-title">1. Legge Zero</div><div class="dlf-node-sub">Processo &gt; tecnologia</div></div>
+<div class="dlf-node n-purple"><div class="dlf-node-title">2. Catena interna</div><div class="dlf-node-sub">Cliente-fornitore</div></div>
+<div class="dlf-node n-purple"><div class="dlf-node-title">3. Fisica flusso</div><div class="dlf-node-sub">3 Leggi + Matrice</div></div>
+<div class="dlf-node n-purple"><div class="dlf-node-title">4. Bisogni</div><div class="dlf-node-sub">Diretti + 3 fonti</div></div>
+<div class="dlf-node n-purple"><div class="dlf-node-title">5. Jidoka digitale</div><div class="dlf-node-sub">Visibilità + anomalie</div></div>
+</div>
+</div>
+
+<div class="dlf-vconn"><span class="arr">↓</span><span>guidano / richiamano</span><span class="arr">↑</span></div>
+
+<div class="dlf-grid">
+<div class="dlf-tier-label">
+<div class="dlf-tier-num">LIVELLO 3</div>
+<div class="dlf-tier-name">Principi operativi</div>
+<div class="dlf-tier-sub">Cosa l'organizzazione FA</div>
+</div>
+<div class="dlf-row">
+<div class="dlf-node n-teal"><div class="dlf-node-title">VALUE ←→</div><div class="dlf-node-sub">Prossimità + Densità</div></div>
+<div class="dlf-node n-teal"><div class="dlf-node-title">STREAM ←→</div><div class="dlf-node-sub">VSM + bottleneck</div></div>
+<div class="dlf-node n-teal"><div class="dlf-node-title">CLEAN ←→</div><div class="dlf-node-sub">9 muda + 3 fonti</div></div>
+<div class="dlf-node n-teal"><div class="dlf-node-title">FLOW ←→</div><div class="dlf-node-sub">PULL + Standard</div></div>
+<div class="dlf-node n-teal"><div class="dlf-node-title">KAIZEN</div><div class="dlf-node-sub">Capacità evolutiva</div></div>
+</div>
+</div>
+
+<div class="dlf-vconn"><span class="arr">↓</span><span>richiedono / servono</span><span class="arr">↑</span></div>
+
+<div class="dlf-grid">
+<div class="dlf-tier-label">
+<div class="dlf-tier-num">LIVELLO 4</div>
+<div class="dlf-tier-name">Strumenti</div>
+<div class="dlf-tier-sub">Cosa l'organizzazione HA — contromisure temporanee</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+<div class="dlf-node n-amber"><div class="dlf-node-title">Value Stream Map</div></div>
+<div class="dlf-node n-amber"><div class="dlf-node-title">DLI scorecard</div></div>
+<div class="dlf-node n-amber"><div class="dlf-node-title">9 muda checklist</div></div>
+<div class="dlf-node n-amber"><div class="dlf-node-title">Matrice impatto/compl</div></div>
+<div class="dlf-node n-amber"><div class="dlf-node-title">Sprint 2 settimane</div></div>
+<div class="dlf-node n-amber"><div class="dlf-node-title">Dashboard di flow</div></div>
+<div class="dlf-node n-amber"><div class="dlf-node-title">Soglie anomaly</div></div>
+<div class="dlf-node n-amber"><div class="dlf-node-title">Runbook + template</div></div>
+</div>
+</div>
+
+<div class="dlf-trace">
+<div class="dlf-trace-head">ESEMPIO DI TRACCIATURA VERTICALE</div>
+<span class="step">Sobrietà + spreco</span><span class="arrow">→</span><span class="step">Pillar 4 (Bisogni + 3 fonti)</span><span class="arrow">→</span><span class="step">CLEAN</span><span class="arrow">→</span><span class="step">9 muda checklist</span>
+<span class="verdict">Se prendi la "9 muda checklist" e non sai risalire fino al valore Sobrietà, lo strumento è orfano. Vedi Lean Test #1.</span>
+</div>
+
+<div class="dlf-section-head">
+<div class="dlf-section-num">SEZIONE 5</div>
+<div class="dlf-section-title">Assessment workflow — l'ordine dei passi</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 8px;">
+<div class="dlf-node n-gray"><div class="dlf-node-title">0A — Confini</div><div class="dlf-node-sub">Unità + astrazione</div></div>
+<div class="dlf-node n-gray"><div class="dlf-node-title">0B — Matrice</div><div class="dlf-node-sub">Da → A quadrante</div></div>
+<div class="dlf-node n-gray"><div class="dlf-node-title">0C — Bisogni</div><div class="dlf-node-sub">Diretti / indiretti</div></div>
+<div class="dlf-node n-gray"><div class="dlf-node-title">0D — Catena</div><div class="dlf-node-sub">Cliente interno</div></div>
+<div class="dlf-node n-gray"><div class="dlf-node-title">0E — Jidoka</div><div class="dlf-node-sub">Visibilità flusso</div></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;">
+<div class="dlf-node n-gray" style="min-height: 40px; padding: 6px 10px;"><div class="dlf-node-title" style="margin: 0;">1. Selezione</div></div>
+<div class="dlf-node n-gray" style="min-height: 40px; padding: 6px 10px;"><div class="dlf-node-title" style="margin: 0;">2. VSM</div></div>
+<div class="dlf-node n-gray" style="min-height: 40px; padding: 6px 10px;"><div class="dlf-node-title" style="margin: 0;">3. Muda</div></div>
+<div class="dlf-node n-gray" style="min-height: 40px; padding: 6px 10px;"><div class="dlf-node-title" style="margin: 0;">4. DLI</div></div>
+<div class="dlf-node n-gray" style="min-height: 40px; padding: 6px 10px;"><div class="dlf-node-title" style="margin: 0;">5. Piano</div></div>
+<div class="dlf-node n-gray" style="min-height: 40px; padding: 6px 10px;"><div class="dlf-node-title" style="margin: 0;">6. Re-ass.</div></div>
+</div>
+
+<div class="dlf-section-head">
+<div class="dlf-section-num">SEZIONE 6</div>
+<div class="dlf-section-title">Lean Test — tre domande anti-teatro lean (a fine sprint)</div>
+</div>
+<div class="dlf-lean-test">
+<div class="dlf-test-card">
+<div class="dlf-test-num">TEST 1 — STRUMENTO</div>
+<div class="dlf-test-title">Strumento orfano</div>
+<div class="dlf-test-body">Per ogni strumento usato in questo sprint, sai dire in 30s a) quale principio DLF serve e b) quale valore il cliente ne riceve?</div>
+<div class="dlf-test-fail">Se no → strumento orfano. Sospendi o ricollega al principio.</div>
+</div>
+<div class="dlf-test-card">
+<div class="dlf-test-num">TEST 2 — METODO</div>
+<div class="dlf-test-title">Metodo cosmetico</div>
+<div class="dlf-test-body">Negli ultimi 3 sprint, una metrica di flusso si è mossa? DLI, flow ratio, throughput, posizione sulla matrice, trazione?</div>
+<div class="dlf-test-fail">Se no → metodo cosmetico. Diagnostica fonte e dimensione.</div>
+</div>
+<div class="dlf-test-card">
+<div class="dlf-test-num">TEST 3 — STRATEGIA</div>
+<div class="dlf-test-title">Strategia in fuga</div>
+<div class="dlf-test-body">Negli ultimi 3 sprint, qualche cliente (interno o finale) ha avuto un vantaggio reale? Meno solleciti, meno escalation?</div>
+<div class="dlf-test-fail">Se no → strategia in fuga. Torna allo Step 0A/0C.</div>
+</div>
+</div>
+<div class="dlf-verdict">Tre sì = framework allineato · Un no = correggi · Due no = ferma · Tre no = torna alla Legge Zero</div>
+
+<div class="dlf-section-head">
+<div class="dlf-section-num">SEZIONE 7</div>
+<div class="dlf-section-title">Superficie applicativa — 4 operational tracks + 1 transversal layer</div>
+</div>
+<div class="dlf-tracks-row">
+<div class="dlf-track-node n-teal">
+<div class="dlf-track-title">IT and Digital Service Delivery</div>
+<div class="dlf-track-sub">Incidenti, accessi, dati, observability, MLOps</div>
+</div>
+<div class="dlf-track-node n-teal">
+<div class="dlf-track-title">Cybersecurity</div>
+<div class="dlf-track-sub">Lean cyber resilience</div>
+</div>
+<div class="dlf-track-node n-teal">
+<div class="dlf-track-title">Leadership &amp; People</div>
+<div class="dlf-track-sub">Lean leadership lab</div>
+</div>
+<div class="dlf-track-node n-teal">
+<div class="dlf-track-title">AI Adoption</div>
+<div class="dlf-track-sub">Process before model</div>
+</div>
+</div>
+<div class="dlf-layer-row">
+<div class="dlf-layer-node n-purple">
+<div class="dlf-layer-tag">+ 1 Transversal layer</div>
+<div class="dlf-layer-title">Digital Transformation Programs</div>
+<div class="dlf-layer-sub">Iniziative end-to-end di redesign / migrazione che attraversano i 4 tracks specialistici</div>
+</div>
+</div>
+<div class="dlf-tracks-caption">Oggi il DLF è focalizzato su questi 4 + 1. Versioni future estenderanno ad altri tracks e layers.</div>
+
+<div class="footer">DLF v2.4 — Companion v1.4 · Maggio 2026 · © 2026 Alessio Setaro · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a> · <a href="../">English version</a></div>
+</body>
+</html>

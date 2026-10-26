@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you reference the Digital Lean Framework, please cite it as below."
+type: report
+title: "Digital Lean Framework (DLF)"
+abstract: "An application layer for lean thinking in non-manufacturing digital contexts: IT and digital service delivery, cybersecurity, leadership and people, AI adoption and digital transformation programs."
+authors:
+  - family-names: Setaro
+    given-names: Alessio
+version: "2.4"
+date-released: "2026-10-26"
+license: CC-BY-NC-ND-4.0
+repository-code: "https://github.com/AleWayfarer/digital-lean-framework"
+keywords:
+  - lean
+  - lean thinking
+  - digital transformation
+  - kaizen
+  - muda
+  - value stream
+  - cybersecurity
+  - leadership
+  - AI adoption

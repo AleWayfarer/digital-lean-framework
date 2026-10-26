@@ -1,0 +1,11 @@
+name: Question
+description: How is a part of the framework meant to be applied?
+title: "[Question] "
+labels: ["question"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true

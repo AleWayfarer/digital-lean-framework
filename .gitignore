@@ -1,0 +1,16 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/
+
+# Local secrets and environment files: never commit them
+.env
+.env.*
+*.pem
+*.key
+
+# Build outputs and packaged skills: published as release assets, not in the tree
+*.zip
