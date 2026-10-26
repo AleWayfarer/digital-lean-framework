@@ -7,7 +7,7 @@
 > Applicazione sistematica dei principi del lean thinking ai processi umani e digitali delle organizzazioni.
 > Manifesto, architettura, cinque pillar, principi operativi VALUE/STREAM/CLEAN/FLOW/KAIZEN, Digital Lean Index e applicazione per dominio.
 
-DLF — Digital Lean Framework © 2026 Alessio Setaro · [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) · Le figure (Matrice di Efficienza, Frontiera di efficienza) sono incluse nell'edizione PDF pubblicata nelle Release del repository.
+DLF — Digital Lean Framework © 2026 Alessio Setaro · [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) · Edizione PDF nella cartella [pdf/it/](../../pdf/it/).
 
 ---
 

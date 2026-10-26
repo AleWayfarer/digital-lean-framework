@@ -32,7 +32,8 @@ digital-lean-framework/
 ├── docs/                    DLF on a page (EN + IT), published with GitHub Pages
 ├── framework/
 │   ├── it/                  Canonical edition (Italian): master framework, Operating Guide, 4 operational assets
-│   └── en/                  English edition
+│   └── en/                  English edition (figures in en/img/)
+├── pdf/it/                  PDF editions (Italian), with figures
 ├── skills/
 │   ├── claude/              Lean Advisor skill for Claude (lean-advisor-en, lean-advisor)
 │   └── gemini/              Lean Advisor as a Gemini Gem (EN, IT)
@@ -48,7 +49,7 @@ digital-lean-framework/
 | Sprint Kaizen | 2.2 | Rituals, templates and the Lean Test |
 | Law Zero Workflow | 2.1 | Decision workflow with three paths (A: not digitized · B: remediation · C: human processes) |
 
-PDF and Word editions, including figures, are attached to each [release](../../releases).
+PDF editions with figures: [pdf/it/](pdf/it/). The English PDF editions will follow.
 
 ## The Lean Advisor (AI skill)
 

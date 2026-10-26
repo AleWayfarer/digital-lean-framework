@@ -38,7 +38,7 @@ Il DLF è un **framework di applicazione del lean thinking, non una nuova scuola
 | Lean Advisor (Claude, IT / EN) | DLF 2.4 | [skills/claude](skills/claude) |
 | Lean Advisor (Gemini Gem, IT / EN) | DLF 2.4 | [skills/gemini](skills/gemini) |
 
-Le edizioni PDF e Word, con le figure, sono allegate a ogni [release](../../releases).
+Le edizioni PDF, con le figure, sono in [pdf/it/](pdf/it/).
 
 ## Licenza
 
