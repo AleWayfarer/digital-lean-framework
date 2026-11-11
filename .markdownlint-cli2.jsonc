@@ -1,0 +1,27 @@
+// Markdown lint for the Digital Lean Framework (markdownlint-cli2).
+// Relaxed on purpose: the canonical text and its copies in skills/ are authored prose,
+// so the style rules they do not follow are off. The rules left on catch real defects
+// (broken link fragments, empty or reversed links, missing alt text, malformed tables...).
+{
+  "config": {
+    "default": true,
+    "MD001": false, // heading-increment
+    "MD004": false, // ul-style
+    "MD007": false, // ul-indent
+    "MD009": false, // no-trailing-spaces
+    "MD012": false, // no-multiple-blanks
+    "MD013": false, // line-length
+    "MD022": false, // blanks-around-headings
+    "MD025": false, // single-title (documents with numbered H1 parts)
+    "MD026": false, // no-trailing-punctuation in headings
+    "MD031": false, // blanks-around-fences
+    "MD032": false, // blanks-around-lists
+    "MD033": false, // no-inline-html
+    "MD034": false, // no-bare-urls
+    "MD036": false, // no-emphasis-as-heading
+    "MD037": false, // no-space-in-emphasis
+    "MD040": false  // fenced-code-language
+  },
+  "globs": ["**/*.md"],
+  "ignores": ["node_modules/**"]
+}

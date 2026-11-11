@@ -1,0 +1,60 @@
+# Markdown checks: lint (relaxed config in .markdownlint-cli2.jsonc, which also checks
+# in-page anchors with MD051) and links between files of the repository (lychee, offline).
+# External links are checked too, but they never fail the job (sites go down, rate limits).
+# Third-party actions are not allowed in this repository: only actions/* are used, lychee is a pinned binary.
+name: markdown
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: 22
+
+      - name: Markdown lint
+        run: npx --yes markdownlint-cli2@0.18.1
+
+      # The repository allows only actions owned by AleWayfarer or created by GitHub, so lychee
+      # runs as the official release binary, pinned by version and sha256, outside the checkout.
+      - name: Install lychee (pinned, sha256-verified)
+        env:
+          LYCHEE_VERSION: "0.20.1"
+          LYCHEE_SHA256: "1dd08bb064e2114c2c9d0c9009f51577de24e805361d6332162807972d8e9474"
+        run: |
+          set -euo pipefail
+          dir="${RUNNER_TEMP}/lychee"
+          mkdir -p "$dir"
+          curl --proto '=https' --tlsv1.2 -fsSL -o "$dir/lychee.tar.gz" \
+            "https://github.com/lycheeverse/lychee/releases/download/lychee-v${LYCHEE_VERSION}/lychee-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${LYCHEE_SHA256}  $dir/lychee.tar.gz" | sha256sum --check --strict
+          tar -xzf "$dir/lychee.tar.gz" -C "$dir" lychee
+          echo "$dir" >> "$GITHUB_PATH"
+
+      - name: Internal links (relative files)
+        run: lychee --offline --no-progress --exclude '/issues' './**/*.md'
+
+      - name: External links (informative, never fails the job)
+        continue-on-error: true
+        timeout-minutes: 3
+        run: lychee --no-progress --max-retries 2 --timeout 20 --accept '200..=299,403,429' --exclude '/issues' --exclude 'linkedin\.com' './**/*.md'
