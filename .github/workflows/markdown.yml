@@ -1,6 +1,7 @@
 # Markdown checks: lint (relaxed config in .markdownlint-cli2.jsonc, which also checks
 # in-page anchors with MD051) and links between files of the repository (lychee, offline).
 # External links are checked too, but they never fail the job (sites go down, rate limits).
+# Third-party actions are not allowed in this repository: only actions/* are used, lychee is a pinned binary.
 name: markdown
 
 on:
@@ -34,16 +35,26 @@ jobs:
       - name: Markdown lint
         run: npx --yes markdownlint-cli2@0.18.1
 
+      # The repository allows only actions owned by AleWayfarer or created by GitHub, so lychee
+      # runs as the official release binary, pinned by version and sha256, outside the checkout.
+      - name: Install lychee (pinned, sha256-verified)
+        env:
+          LYCHEE_VERSION: "0.20.1"
+          LYCHEE_SHA256: "1dd08bb064e2114c2c9d0c9009f51577de24e805361d6332162807972d8e9474"
+        run: |
+          set -euo pipefail
+          dir="${RUNNER_TEMP}/lychee"
+          mkdir -p "$dir"
+          curl --proto '=https' --tlsv1.2 -fsSL -o "$dir/lychee.tar.gz" \
+            "https://github.com/lycheeverse/lychee/releases/download/lychee-v${LYCHEE_VERSION}/lychee-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${LYCHEE_SHA256}  $dir/lychee.tar.gz" | sha256sum --check --strict
+          tar -xzf "$dir/lychee.tar.gz" -C "$dir" lychee
+          echo "$dir" >> "$GITHUB_PATH"
+
       - name: Internal links (relative files)
-        uses: lycheeverse/lychee-action@885c65f3dc543b57c898c8099f4e08c8afd178a2 # v2.6.1 (lychee v0.20.1)
-        with:
-          args: --offline --no-progress --exclude '/issues' './**/*.md'
-          fail: true
+        run: lychee --offline --no-progress --exclude '/issues' './**/*.md'
 
       - name: External links (informative, never fails the job)
         continue-on-error: true
         timeout-minutes: 3
-        uses: lycheeverse/lychee-action@885c65f3dc543b57c898c8099f4e08c8afd178a2 # v2.6.1 (lychee v0.20.1)
-        with:
-          args: --no-progress --max-retries 2 --timeout 20 --accept '200..=299,403,429' --exclude '/issues' --exclude 'linkedin\.com' './**/*.md'
-          fail: false
+        run: lychee --no-progress --max-retries 2 --timeout 20 --accept '200..=299,403,429' --exclude '/issues' --exclude 'linkedin\.com' './**/*.md'
